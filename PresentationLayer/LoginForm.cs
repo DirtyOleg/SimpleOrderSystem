@@ -1,4 +1,6 @@
-﻿using CommonUtilityLayer.Model;
+﻿using BusinessLogicLayer;
+using CommonUtilityLayer;
+using CommonUtilityLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,9 +29,23 @@ namespace PresentationLayer
         private void btnLogin_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(txtEId.Text);
-            string pwd = txtPwd.Text;
-            EmployeeInfo emp = new EmployeeInfo() { EId = id, EPwd = pwd };
+            string pwd = MD5Helper.EncryptString(txtPwd.Text);
+            EmployeeInfo emp = new EmployeeInfo() {
+                EId = id,
+                EPwd = pwd
+            };
 
+            EmployeeInfoBLL eiBLL = new EmployeeInfoBLL();
+            if (eiBLL.EmployeeLogin(emp))
+            {
+                MainForm mainfrm = new MainForm();
+                mainfrm.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Input Infomation is not valid,\nor Employee do not exist", "Login Fail");
+            }
         }
     }
 }

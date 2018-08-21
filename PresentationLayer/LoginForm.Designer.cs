@@ -67,6 +67,7 @@
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.Size = new System.Drawing.Size(100, 26);
             this.txtPwd.TabIndex = 3;
+            this.txtPwd.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
@@ -80,7 +81,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(434, 311);
+            this.btnReset.Location = new System.Drawing.Point(432, 285);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(101, 49);
             this.btnReset.TabIndex = 5;

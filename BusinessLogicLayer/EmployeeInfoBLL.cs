@@ -39,22 +39,23 @@ namespace BusinessLogicLayer
         }
 
         /// <summary>
-        /// 
+        /// "Delete" an existed employee information
         /// </summary>
         /// <param name="emp"></param>
-        /// <returns>Delete an existed employee information. NOTE: this is soft deletion</returns>
+        /// <returns>The ID of the employee, whose infomation had been modified.</returns>
         public int DeleteEmployeeInfo(EmployeeInfo emp)
         {
             return Convert.ToInt32(miDAL.DeleteCommand(emp));
         }
 
+        /// <summary>
+        /// Based on input EId and EPwd, check if the user is valid
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <returns></returns>
         public bool EmployeeLogin(EmployeeInfo emp)
         {
-            bool isSuccuess = false;
-
-            
-
-            return isSuccuess;
+            return miDAL.SelectCommand(emp) > 0 ? true : false;
         }
     }
 }

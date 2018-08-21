@@ -34,17 +34,21 @@ namespace DataAccessLayer
             return EmpList;
         }
 
+        /// <summary>
+        /// Search one specific employee based on EId and EPwd
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <returns>The number of affected lines</returns>
         public int SelectCommand(EmployeeInfo emp)
         {
-            string sqlCommand = "SELECT EId, EName, EPwd, EPosition, DelFlag FROM [dbo].[EmployeeInfo] WHERE EId=@EId AND EPwd=@EPwd AND DelFlag <> 'False' ";
-            SqlParameter[] cmdParams = {
+            string sqlCommand = "SELECT EId, EName, EPwd, EPosition FROM [dbo].[EmployeeInfo] WHERE EId=@EId AND EPwd=@EPwd AND DelFlag = 'False' "; SqlParameter[] cmdParams = {
                 new SqlParameter("@EId", emp.EId),
                 new SqlParameter("@EPwd", emp.EPwd)
             };
 
             try
             {
-                return Convert.ToInt32(SqlHelper.ExecuteNonQuery(sqlCommand, cmdParams));
+                return Convert.ToInt32(SqlHelper.ExecuteScalar(sqlCommand, cmdParams));
             }
             catch (Exception e)
             {
@@ -53,6 +57,11 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// Add a new employee based on EName, EPwd, EPosition
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <returns>The Number of affected line</returns>
         public int InsertCommand(EmployeeInfo emp)
         {
             string sqlCommand = "INSERT INTO EmployeeInfo(EName, EPwd, EPosition) VALUES(@name,@pwd,@position)";
@@ -73,6 +82,11 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// Update a employee information based on EId, EName, EPosition
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <returns>The EId of the employee</returns>
         public object UpdateCommnad(EmployeeInfo emp)
         {
             string sqlCommand = string.Empty;
@@ -99,6 +113,11 @@ namespace DataAccessLayer
             return SqlHelper.ExecuteScalar(sqlCommand, sqlParams.ToArray());
         }
 
+        /// <summary>
+        /// Set the DelFlag true
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <returns>The EId of the employee</returns>
         public object DeleteCommand(EmployeeInfo emp)
         {
             string sqlCommand = "[dbo].[SetDelFlagTrue]";

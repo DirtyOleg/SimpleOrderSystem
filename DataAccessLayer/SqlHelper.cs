@@ -19,7 +19,7 @@ namespace DataAccessLayer
             int numberOfAffectedLines = 0;
 
             using (SqlConnection conn = new SqlConnection(connString))
-            {                
+            {
                 SqlCommand cmd = new SqlCommand(sqlCommand, conn);
                 cmd.Parameters.AddRange(cmdParams);
 
@@ -32,15 +32,15 @@ namespace DataAccessLayer
 
         public static object ExecuteScalar(string sqlCommand, params SqlParameter[] cmdParams)
         {
-            object firstCell = null;            
+            object firstCell = null;
 
             using (SqlConnection conn = new SqlConnection(connString))
-            {                
+            {
                 SqlCommand cmd = new SqlCommand(sqlCommand, conn);
                 cmd.Parameters.AddRange(cmdParams);
-                if (cmdParams.Length == 2)
+
+                if (!(sqlCommand.Contains("SELECT") || sqlCommand.Contains("INSERT") || sqlCommand.Contains("UPDATE")))
                 {
-                    //there is only one stored procedure in this database, which is soft delete(set DelFlag to true), and this very stored procedure is the only one require two paramerized parameter
                     cmd.CommandType = CommandType.StoredProcedure;
                 }
                 else
