@@ -110,7 +110,15 @@ namespace DataAccessLayer
                 sqlParams.Add(new SqlParameter("@position", emp.EPosition));
             };
 
-            return SqlHelper.ExecuteScalar(sqlCommand, sqlParams.ToArray());
+            try
+            {
+                return SqlHelper.ExecuteScalar(sqlCommand, sqlParams.ToArray());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }            
         }
 
         /// <summary>
@@ -126,7 +134,16 @@ namespace DataAccessLayer
                 new SqlParameter("@id", emp.EId),
                 new SqlParameter("@tableName","EmployeeInfo")
             };
-            return SqlHelper.ExecuteScalar(sqlCommand, cmdParams);
+
+            try
+            {
+                return SqlHelper.ExecuteScalar(sqlCommand, cmdParams);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
         }
     }
 }
