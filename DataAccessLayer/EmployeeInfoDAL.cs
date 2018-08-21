@@ -34,6 +34,25 @@ namespace DataAccessLayer
             return EmpList;
         }
 
+        public int SelectCommand(EmployeeInfo emp)
+        {
+            string sqlCommand = "SELECT EId, EName, EPwd, EPosition, DelFlag FROM [dbo].[EmployeeInfo] WHERE EId=@EId AND EPwd=@EPwd AND DelFlag <> 'False' ";
+            SqlParameter[] cmdParams = {
+                new SqlParameter("@EId", emp.EId),
+                new SqlParameter("@EPwd", emp.EPwd)
+            };
+
+            try
+            {
+                return Convert.ToInt32(SqlHelper.ExecuteNonQuery(sqlCommand, cmdParams));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
+            }
+        }
+
         public int InsertCommand(EmployeeInfo emp)
         {
             string sqlCommand = "INSERT INTO EmployeeInfo(EName, EPwd, EPosition) VALUES(@name,@pwd,@position)";

@@ -2,6 +2,7 @@
 using DataAccessLayer;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,7 +45,16 @@ namespace BusinessLogicLayer
         /// <returns>Delete an existed employee information. NOTE: this is soft deletion</returns>
         public int DeleteEmployeeInfo(EmployeeInfo emp)
         {
-           return Convert.ToInt32(miDAL.DeleteCommand(emp));
+            return Convert.ToInt32(miDAL.DeleteCommand(emp));
+        }
+
+        public bool EmployeeLogin(EmployeeInfo emp)
+        {
+            bool isSuccuess = false;
+
+            
+
+            return isSuccuess;
         }
     }
 }
