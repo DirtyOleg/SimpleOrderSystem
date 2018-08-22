@@ -279,6 +279,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "EmployeeManagementForm";
             this.Text = "EmployeeManagementForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmployeeManagementForm_FormClosing);
             this.Load += new System.EventHandler(this.EmployeeManagementForm_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).EndInit();

@@ -39,6 +39,18 @@ namespace PresentationLayer
             if (eiBLL.EmployeeLogin(emp))
             {
                 MainForm mainfrm = new MainForm();
+
+                //using Tag in MainForm to transit the Position information of the login employee
+                //0 for manager, 1 for employee
+                if (emp.EPosition=="Manager")
+                {
+                    mainfrm.Tag = 0;
+                }
+                else
+                {
+                    mainfrm.Tag = 1;
+                }
+
                 mainfrm.Show();
                 this.Hide();
             }

@@ -15,11 +15,23 @@ namespace PresentationLayer
 {
     public partial class EmployeeManagementForm : Form
     {
+        static EmployeeManagementForm frm = null;
         EmployeeInfoBLL eiBLL = new EmployeeInfoBLL();
+        List<EmployeeInfo> empList = new List<EmployeeInfo>();
 
-        public EmployeeManagementForm()
+        private EmployeeManagementForm()
         {
             InitializeComponent();
+        }
+
+        public static EmployeeManagementForm GetForm()
+        {
+            if (frm == null)
+            {
+                frm = new EmployeeManagementForm();
+            }
+
+            return frm;
         }
 
         private void EmployeeManagementForm_Load(object sender, EventArgs e)
@@ -31,7 +43,8 @@ namespace PresentationLayer
         {
             //disenble AutoGenerate for the datagrindview
             dgvEmployeeList.AutoGenerateColumns = false;
-            dgvEmployeeList.DataSource = eiBLL.GetList();
+            empList = eiBLL.GetList();
+            dgvEmployeeList.DataSource = empList;
         }
 
         private void ResetTxtBtn()
@@ -109,7 +122,7 @@ namespace PresentationLayer
                 };
 
                 int id = eiBLL.DeleteEmployeeInfo(emp);
-                MessageBox.Show($"Change to EmployeeInfo Table\nID:{id} DELETE Success","Result");
+                MessageBox.Show($"Change to EmployeeInfo Table\nID:{id} DELETE Success", "Result");
             }
             else
             {
@@ -152,6 +165,11 @@ namespace PresentationLayer
         private void btnReset_Click(object sender, EventArgs e)
         {
             ResetTxtBtn();
+        }
+
+        private void EmployeeManagementForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frm = null;
         }
     }
 }

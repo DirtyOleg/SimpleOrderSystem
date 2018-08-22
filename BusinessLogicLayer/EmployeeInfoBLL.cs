@@ -25,7 +25,7 @@ namespace BusinessLogicLayer
         /// <returns></returns>
         public int AddNewEmployeeInfo(EmployeeInfo emp)
         {
-            return miDAL.InsertCommand(emp);
+            return miDAL.CommandForAddNewEmployee(emp);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace BusinessLogicLayer
         /// <returns>The ID of the employee, whose infomation had been modified.</returns>
         public int UpdateEmployeeInfo(EmployeeInfo emp)
         {
-            return Convert.ToInt32(miDAL.UpdateCommnad(emp));
+            return Convert.ToInt32(miDAL.CommnadForUpdateEmployeeInfo(emp));
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace BusinessLogicLayer
         /// <returns>The ID of the employee, whose infomation had been modified.</returns>
         public int DeleteEmployeeInfo(EmployeeInfo emp)
         {
-            return Convert.ToInt32(miDAL.DeleteCommand(emp));
+            return Convert.ToInt32(miDAL.CommandForDeleteEmployeeInfo(emp));
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace BusinessLogicLayer
         /// <returns></returns>
         public bool EmployeeLogin(EmployeeInfo emp)
         {
-            return miDAL.SelectCommand(emp) > 0 ? true : false;
+            return miDAL.CommandForLogin(emp) == null ? false : true;
         }
     }
 }
