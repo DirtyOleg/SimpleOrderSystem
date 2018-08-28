@@ -41,15 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DishInfoBLL.cs" />
+    <Compile Include="DishBLL.cs" />
     <Compile Include="DishTypeBLL.cs" />
-    <Compile Include="EmployeeInfoBLL.cs" />
-    <Compile Include="MemberInfoBLL.cs" />
+    <Compile Include="EmployeeBLL.cs" />
+    <Compile Include="MemberBLL.cs" />
     <Compile Include="MembershipBLL.cs" />
-    <Compile Include="OrderDetailInfoBLL.cs" />
-    <Compile Include="OrderInfoBLL.cs" />
+    <Compile Include="OrderDetailBLL.cs" />
+    <Compile Include="OrderSummaryBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TableInfoBLL.cs" />
+    <Compile Include="TablesBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonUtilityLayer\CommonUtilityLayer.csproj">

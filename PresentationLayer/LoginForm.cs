@@ -30,12 +30,12 @@ namespace PresentationLayer
         {
             int id = Convert.ToInt32(txtEId.Text);
             string pwd = MD5Helper.EncryptString(txtPwd.Text);
-            EmployeeInfo emp = new EmployeeInfo() {
+            Employee emp = new Employee() {
                 EmployeeId = id,
                 EmployeePwd = pwd
             };
 
-            EmployeeInfoBLL eiBLL = new EmployeeInfoBLL();
+            EmployeeBLL eiBLL = new EmployeeBLL();
             if (eiBLL.EmployeeLogin(emp))
             {
                 MainForm mainfrm = new MainForm();

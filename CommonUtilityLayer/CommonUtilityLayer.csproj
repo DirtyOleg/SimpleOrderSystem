@@ -44,7 +44,7 @@
     <Compile Include="MD5Helper.cs" />
     <Compile Include="Model\Dish.cs" />
     <Compile Include="Model\DishType.cs" />
-    <Compile Include="Model\EmployeeInfo.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Membership.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\OrderDetail.cs" />

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer
 {
-    public class DishInfoBLL
+    public class DishBLL
     {
-        private DishInfoDAL diDAL = new DishInfoDAL();
+        private DishDAL diDAL = new DishDAL();
 
         public List<Dish> GetList()
         {

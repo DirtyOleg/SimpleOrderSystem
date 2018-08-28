@@ -30,6 +30,9 @@
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvEmployeeList = new System.Windows.Forms.DataGridView();
+            this.EmployeeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeePosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -44,9 +47,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.EmployeeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeePosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -83,6 +83,29 @@
             this.dgvEmployeeList.Size = new System.Drawing.Size(531, 397);
             this.dgvEmployeeList.TabIndex = 0;
             this.dgvEmployeeList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployeeList_CellDoubleClick);
+            // 
+            // EmployeeId
+            // 
+            this.EmployeeId.DataPropertyName = "EmployeeId";
+            this.EmployeeId.HeaderText = "Employee ID";
+            this.EmployeeId.Name = "EmployeeId";
+            this.EmployeeId.ReadOnly = true;
+            this.EmployeeId.Width = 75;
+            // 
+            // EmployeeName
+            // 
+            this.EmployeeName.DataPropertyName = "EmployeeName";
+            this.EmployeeName.HeaderText = "Name";
+            this.EmployeeName.Name = "EmployeeName";
+            this.EmployeeName.ReadOnly = true;
+            // 
+            // EmployeePosition
+            // 
+            this.EmployeePosition.DataPropertyName = "EmployeePosition";
+            this.EmployeePosition.HeaderText = "Position";
+            this.EmployeePosition.Name = "EmployeePosition";
+            this.EmployeePosition.ReadOnly = true;
+            this.EmployeePosition.Width = 127;
             // 
             // groupBox1
             // 
@@ -247,29 +270,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name:";
             // 
-            // EmployeeId
-            // 
-            this.EmployeeId.DataPropertyName = "EmployeeId";
-            this.EmployeeId.HeaderText = "Employee ID";
-            this.EmployeeId.Name = "EmployeeId";
-            this.EmployeeId.ReadOnly = true;
-            this.EmployeeId.Width = 75;
-            // 
-            // EmployeeName
-            // 
-            this.EmployeeName.DataPropertyName = "EmployeeName";
-            this.EmployeeName.HeaderText = "Name";
-            this.EmployeeName.Name = "EmployeeName";
-            this.EmployeeName.ReadOnly = true;
-            // 
-            // EmployeePosition
-            // 
-            this.EmployeePosition.DataPropertyName = "EmployeePosition";
-            this.EmployeePosition.HeaderText = "Position";
-            this.EmployeePosition.Name = "EmployeePosition";
-            this.EmployeePosition.ReadOnly = true;
-            this.EmployeePosition.Width = 127;
-            // 
             // EmployeeManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -277,8 +277,10 @@
             this.ClientSize = new System.Drawing.Size(1010, 451);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EmployeeManagementForm";
-            this.Text = "EmployeeManagementForm";
+            this.Text = "Employee Management";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmployeeManagementForm_FormClosing);
             this.Load += new System.EventHandler(this.EmployeeManagementForm_Load);
             this.groupBox2.ResumeLayout(false);

@@ -35,13 +35,19 @@ namespace PresentationLayer
 
         private void menuManager_DoubleClick(object sender, EventArgs e)
         {
-            EmployeeManagementForm empManament = EmployeeManagementForm.GetForm();
-            empManament.Show();
+            EmployeeManagementForm empManageFrm = EmployeeManagementForm.GetForm();
+            empManageFrm.Show();
         }
 
         private void menuExit_DoubleClick(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void menuMembership_DoubleClick(object sender, EventArgs e)
+        {
+            MembershipManagementForm mmManageFrm = MembershipManagementForm.GetForm();
+            mmManageFrm.Show();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonUtilityLayer.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,24 +10,24 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class MemberInfoDAL
+    public class MemberDAL
     {
-        public List<MemberInfo> GetList()
+        public List<Member> GetList()
         {
             string sqlCommand = "";
             DataTable dt = SqlHelper.GetFilledTable(sqlCommand);
 
-            List<MemberInfo> memberInfoList = new List<MemberInfo>();
+            List<Member> memberList = new List<Member>();
             foreach (DataRow row in dt.Rows)
             {
 
             }
 
-            return memberInfoList;
+            return memberList;
         }
 
 
-        public int SelectCommand(MemberInfo memberInfo)
+        public int SelectCommand(Member member)
         {
             string sqlCommand = "";
             SqlParameter[] cmdParams = {
@@ -45,7 +46,7 @@ namespace DataAccessLayer
         }
 
 
-        public int InsertCommand(MemberInfo memberInfo)
+        public int InsertCommand(Member member)
         {
             string sqlCommand = "";
             SqlParameter[] cmdParams = {
@@ -63,7 +64,7 @@ namespace DataAccessLayer
         }
 
 
-        public object UpdateCommnad(MemberInfo memberInfo)
+        public object UpdateCommnad(Member member)
         {
             string sqlCommand = "";
             SqlParameter[] cmdParams = {
@@ -81,7 +82,7 @@ namespace DataAccessLayer
         }
 
 
-        public object DeleteCommand(MemberInfo memberInfo)
+        public object DeleteCommand(Member member)
         {
             string sqlCommand = "[dbo].[SetDelFlagTrue]";
 

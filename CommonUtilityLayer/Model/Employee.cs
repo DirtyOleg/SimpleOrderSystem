@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CommonUtilityLayer.Model
 {
-    public class EmployeeInfo
+    public class Employee
     {
         public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }

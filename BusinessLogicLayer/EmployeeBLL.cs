@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer
 {
-    public class EmployeeInfoBLL
+    public class EmployeeBLL
     {
-        private EmployeeInfoDAL miDAL = new EmployeeInfoDAL();
+        private EmployeeDAL emDAL = new EmployeeDAL();
 
-        public List<EmployeeInfo> GetList()
+        public List<Employee> GetList()
         {
-            return miDAL.GetList();
+            return emDAL.GetList();
         }
 
         /// <summary>
@@ -23,9 +23,9 @@ namespace BusinessLogicLayer
         /// </summary>
         /// <param name="emp"></param>
         /// <returns></returns>
-        public int AddNewEmployeeInfo(EmployeeInfo emp)
+        public int AddNewEmployeeInfo(Employee emp)
         {
-            return miDAL.CommandForAddNewEmployee(emp);
+            return emDAL.CommandForAddNewEmployee(emp);
         }
 
         /// <summary>
@@ -33,9 +33,9 @@ namespace BusinessLogicLayer
         /// </summary>
         /// <param name="emp"></param>
         /// <returns>The ID of the employee, whose infomation had been modified.</returns>
-        public int UpdateEmployeeInfo(EmployeeInfo emp)
+        public int UpdateEmployeeInfo(Employee emp)
         {
-            return Convert.ToInt32(miDAL.CommnadForUpdateEmployeeInfo(emp));
+            return Convert.ToInt32(emDAL.CommnadForUpdateEmployeeInfo(emp));
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace BusinessLogicLayer
         /// </summary>
         /// <param name="emp"></param>
         /// <returns>The ID of the employee, whose infomation had been modified.</returns>
-        public int DeleteEmployeeInfo(EmployeeInfo emp)
+        public int DeleteEmployeeInfo(Employee emp)
         {
-            return Convert.ToInt32(miDAL.CommandForDeleteEmployeeInfo(emp));
+            return Convert.ToInt32(emDAL.CommandForDeleteEmployeeInfo(emp));
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace BusinessLogicLayer
         /// </summary>
         /// <param name="emp"></param>
         /// <returns></returns>
-        public bool EmployeeLogin(EmployeeInfo emp)
+        public bool EmployeeLogin(Employee emp)
         {
-            return miDAL.CommandForLogin(emp) == null ? false : true;
+            return emDAL.CommandForLogin(emp) == null ? false : true;
         }
     }
 }

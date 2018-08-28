@@ -16,8 +16,8 @@ namespace PresentationLayer
     public partial class EmployeeManagementForm : Form
     {
         static EmployeeManagementForm frm = null;
-        EmployeeInfoBLL eiBLL = new EmployeeInfoBLL();
-        List<EmployeeInfo> empList = new List<EmployeeInfo>();
+        EmployeeBLL eiBLL = new EmployeeBLL();
+        List<Employee> empList = new List<Employee>();
 
         private EmployeeManagementForm()
         {
@@ -36,13 +36,13 @@ namespace PresentationLayer
 
         private void EmployeeManagementForm_Load(object sender, EventArgs e)
         {
-            LoadEmployeeList();
-        }
-
-        private void LoadEmployeeList()
-        {
             //disenble AutoGenerate for the datagrindview
             dgvEmployeeList.AutoGenerateColumns = false;
+            RefreshDataGrindViewData();
+        }
+
+        private void RefreshDataGrindViewData()
+        {            
             empList = eiBLL.GetList();
             dgvEmployeeList.DataSource = empList;
         }
@@ -60,7 +60,7 @@ namespace PresentationLayer
         {
             bool isSuccess = false;
 
-            EmployeeInfo emp = new EmployeeInfo()
+            Employee emp = new Employee()
             {
                 EmployeeName = txtName.Text.Trim(),
                 EmployeePosition = rbManager.Checked ? "Manager" : "Employee",
@@ -75,7 +75,7 @@ namespace PresentationLayer
 
                     if (eiBLL.AddNewEmployeeInfo(emp) != 0)
                     {
-                        MessageBox.Show($"Changes made to EmployeeInfo Table\nOperation: Add New Employee\nSuccess!", "Result");
+                        MessageBox.Show($"Changes made to Employee Table\nOperation: Add New Employee\nSuccess!", "Result");
                         isSuccess = true;
                     }
                 }                
@@ -121,13 +121,13 @@ namespace PresentationLayer
         {
             if (!txtId.Text.Equals("    Automatically Generate"))
             {
-                EmployeeInfo emp = new EmployeeInfo()
+                Employee emp = new Employee()
                 {
                     EmployeeId = Convert.ToInt32(txtId.Text)
                 };
 
                 int id = eiBLL.DeleteEmployeeInfo(emp);
-                MessageBox.Show($"Changes Made to EmployeeInfo Table\nDelete Employee Info with ID:{id}\nSuccess!", "Result");
+                MessageBox.Show($"Changes Made to Employee Table\nDelete Employee Info with ID:{id}\nSuccess!", "Result");
                 RefreshDataGrindViewData();
             }
             else
@@ -176,13 +176,7 @@ namespace PresentationLayer
         private void EmployeeManagementForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             frm = null;
-        }
-
-        private void RefreshDataGrindViewData()
-        {
-            LoadEmployeeList();
-            dgvEmployeeList.DataSource = empList;
-        }
+        }        
 
     }
 }

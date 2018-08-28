@@ -10,19 +10,19 @@ using CommonUtilityLayer.Model;
 
 namespace DataAccessLayer
 {
-    public class EmployeeInfoDAL
+    public class EmployeeDAL
     {
-        public List<EmployeeInfo> GetList()
+        public List<Employee> GetList()
         {
             //Obtain all the Employee infomation from database
             string sqlCommand = "SELECT EmployeeId, EmployeeName, EmployeePwd, EmployeePosition FROM [dbo].[Employee] WHERE DelFlag <> 'True'";
             DataTable empDataTable = SqlHelper.GetFilledTable(sqlCommand);
 
             //Obtain data from the filled datatable, and store them into a EmployeeInfo List
-            List<EmployeeInfo> EmpList = new List<EmployeeInfo>();
+            List<Employee> EmpList = new List<Employee>();
             foreach (DataRow row in empDataTable.Rows)
             {
-                EmpList.Add(new EmployeeInfo()
+                EmpList.Add(new Employee()
                 {
                     EmployeeId = Convert.ToInt32(row["EmployeeId"]),
                     EmployeeName = row["EmployeeName"].ToString(),
@@ -39,7 +39,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="emp"></param>
         /// <returns>The EmployeeInfo instance with EId, EPwd and EPosition</returns>
-        public EmployeeInfo CommandForLogin(EmployeeInfo emp)
+        public Employee CommandForLogin(Employee emp)
         {
             string sqlCommand = "SELECT EmployeePosition FROM [dbo].[Employee] WHERE EmployeeId=@EmployeeId AND EmployeePwd=@EmployeePwd AND DelFlag = 'False' "; SqlParameter[] cmdParams = {
                 new SqlParameter("@EmployeeId", emp.EmployeeId),
@@ -72,7 +72,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="emp"></param>
         /// <returns>The Number of affected line</returns>
-        public int CommandForAddNewEmployee(EmployeeInfo emp)
+        public int CommandForAddNewEmployee(Employee emp)
         {
             string sqlCommand = "INSERT INTO Employee(EmployeeName, EmployeePwd, EmployeePosition) VALUES(@name,@pwd,@position)";
             SqlParameter[] cmdParams = {
@@ -97,7 +97,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="emp"></param>
         /// <returns>The EId of the employee</returns>
-        public object CommnadForUpdateEmployeeInfo(EmployeeInfo emp)
+        public object CommnadForUpdateEmployeeInfo(Employee emp)
         {
             string sqlCommand = string.Empty;
             List<SqlParameter> sqlParams = new List<SqlParameter>();
@@ -136,7 +136,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="emp"></param>
         /// <returns>The EId of the employee</returns>
-        public object CommandForDeleteEmployeeInfo(EmployeeInfo emp)
+        public object CommandForDeleteEmployeeInfo(Employee emp)
         {
             string sqlCommand = "[dbo].[SetDelFlagTrue]";
 

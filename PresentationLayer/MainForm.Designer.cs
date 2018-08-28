@@ -30,6 +30,7 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuManager = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMembership = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -41,6 +42,7 @@
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(128, 128);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuManager,
+            this.menuMembership,
             this.menuExit});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -59,6 +61,15 @@
             this.menuManager.Text = "toolStripMenuItem1";
             this.menuManager.DoubleClick += new System.EventHandler(this.menuManager_DoubleClick);
             // 
+            // menuMembership
+            // 
+            this.menuMembership.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menuMembership.DoubleClickEnabled = true;
+            this.menuMembership.Image = global::PresentationLayer.Properties.Resources.Membership;
+            this.menuMembership.Name = "menuMembership";
+            this.menuMembership.Size = new System.Drawing.Size(140, 132);
+            this.menuMembership.DoubleClick += new System.EventHandler(this.menuMembership_DoubleClick);
+            // 
             // menuExit
             // 
             this.menuExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -66,7 +77,6 @@
             this.menuExit.Image = global::PresentationLayer.Properties.Resources.Exit2;
             this.menuExit.Name = "menuExit";
             this.menuExit.Size = new System.Drawing.Size(140, 132);
-            this.menuExit.Text = "toolStripMenuItem1";
             this.menuExit.DoubleClick += new System.EventHandler(this.menuExit_DoubleClick);
             // 
             // MainForm
@@ -94,5 +104,6 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuManager;
         private System.Windows.Forms.ToolStripMenuItem menuExit;
+        private System.Windows.Forms.ToolStripMenuItem menuMembership;
     }
 }

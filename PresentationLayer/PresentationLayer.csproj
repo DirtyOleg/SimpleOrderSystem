@@ -64,6 +64,18 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MemberManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberManagementForm.Designer.cs">
+      <DependentUpon>MemberManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MembershipManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MembershipManagementForm.Designer.cs">
+      <DependentUpon>MembershipManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EmployeeManagementForm.resx">
@@ -74,6 +86,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberManagementForm.resx">
+      <DependentUpon>MemberManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MembershipManagementForm.resx">
+      <DependentUpon>MembershipManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Exit2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Membership.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

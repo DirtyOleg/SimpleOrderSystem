@@ -42,16 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DishInfoDAL.cs" />
+    <Compile Include="DishDAL.cs" />
     <Compile Include="DishTypeDAL.cs" />
-    <Compile Include="EmployeeInfoDAL.cs" />
-    <Compile Include="MemberInfoDAL.cs" />
+    <Compile Include="EmployeeDAL.cs" />
+    <Compile Include="MemberDAL.cs" />
     <Compile Include="MembershipDAL.cs" />
-    <Compile Include="OrderDetailInfoDAL.cs" />
-    <Compile Include="OrderInfoDAL.cs" />
+    <Compile Include="OrderDetailDAL.cs" />
+    <Compile Include="OrderSummaryDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlHelper.cs" />
-    <Compile Include="TableInfoDAL.cs" />
+    <Compile Include="TablesDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonUtilityLayer\CommonUtilityLayer.csproj">

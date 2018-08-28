@@ -9,24 +9,26 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class TableInfoDAL
+    public class OrderSummaryDAL
     {
-        public List<TableInfo> GetList()
+        public DataTable DataTable { get; private set; }
+
+        public List<OrderSummary> GetList()
         {
             string sqlCommand = "";
-            DataTable dt= SqlHelper.GetFilledTable(sqlCommand);
+            DataTable dt = SqlHelper.GetFilledTable(sqlCommand);
 
-            List <TableInfo> tableInfoList = new List<TableInfo>();
+            List<OrderSummary> orderSummaryList = new List<OrderSummary>();
             foreach (DataRow row in dt.Rows)
             {
 
             }
 
-            return tableInfoList;
+            return orderSummaryList;
         }
 
 
-        public int SelectCommand(TableInfo tableInfo)
+        public int SelectCommand(OrderSummary orderSummary)
         {
             string sqlCommand = "";
             SqlParameter[] cmdParams = {
@@ -45,7 +47,7 @@ namespace DataAccessLayer
         }
 
 
-        public int InsertCommand(TableInfo tableInfo)
+        public int InsertCommand(OrderSummary orderSummary)
         {
             string sqlCommand = "";
             SqlParameter[] cmdParams = {
@@ -63,7 +65,7 @@ namespace DataAccessLayer
         }
 
 
-        public object UpdateCommnad(TableInfo tableInfo)
+        public object UpdateCommnad(OrderSummary orderSummary)
         {
             string sqlCommand = "";
             SqlParameter[] cmdParams = {
@@ -81,7 +83,7 @@ namespace DataAccessLayer
         }
 
 
-        public object DeleteCommand(TableInfo tableInfo)
+        public object DeleteCommand(OrderSummary orderSummary)
         {
             string sqlCommand = "[dbo].[SetDelFlagTrue]";
 
