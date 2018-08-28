@@ -41,6 +41,7 @@ namespace DataAccessLayer
 
                 if (!(sqlCommand.Contains("SELECT") || sqlCommand.Contains("INSERT") || sqlCommand.Contains("UPDATE")))
                 {
+                    //there is a stored procedure for soft delete
                     cmd.CommandType = CommandType.StoredProcedure;
                 }
                 else

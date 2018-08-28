@@ -12,22 +12,22 @@ namespace BusinessLogicLayer
     {
         private DishInfoDAL diDAL = new DishInfoDAL();
 
-        public List<DishInfo> GetList()
+        public List<Dish> GetList()
         {
             return diDAL.GetList();
         }
         
-        public int AddDishInfo(DishInfo dish)
+        public int AddDishInfo(Dish dish)
         {
             return diDAL.InsertCommand(dish);
         }
 
-        public int UpdateDishInfo(DishInfo dish)
+        public int UpdateDishInfo(Dish dish)
         {
             return Convert.ToInt32(diDAL.UpdateCommnad(dish));
         }
 
-        public int DeleteDishInfo(DishInfo dish)
+        public int DeleteDishInfo(Dish dish)
         {
             return Convert.ToInt32(diDAL.DeleteCommand(dish));
         }

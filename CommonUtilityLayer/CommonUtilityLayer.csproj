@@ -42,14 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MD5Helper.cs" />
-    <Compile Include="Model\DishInfo.cs" />
+    <Compile Include="Model\Dish.cs" />
     <Compile Include="Model\DishType.cs" />
     <Compile Include="Model\EmployeeInfo.cs" />
     <Compile Include="Model\Membership.cs" />
-    <Compile Include="Model\MemeberInfo.cs" />
-    <Compile Include="Model\OrderDetailInfo.cs" />
-    <Compile Include="Model\OrderInfo.cs" />
-    <Compile Include="Model\TableInfo.cs" />
+    <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\OrderDetail.cs" />
+    <Compile Include="Model\OrderSummary.cs" />
+    <Compile Include="Model\Tables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,9 +8,9 @@ namespace CommonUtilityLayer.Model
 {
     public class Membership
     {
-        public int MId { get; set; }
-        public string MName { get; set; }
-        public decimal MDiscountType { get; set; }
+        public int MembershipId { get; set; }
+        public string MembershipName { get; set; }
+        public decimal DiscountType { get; set; }
         public bool DelFlag { get; set; }
     }
 }

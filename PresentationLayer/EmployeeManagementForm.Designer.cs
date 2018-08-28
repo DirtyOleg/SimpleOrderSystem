@@ -30,9 +30,6 @@
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvEmployeeList = new System.Windows.Forms.DataGridView();
-            this.EId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -47,6 +44,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.EmployeeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeePosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -59,7 +59,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(560, 423);
+            this.groupBox2.Size = new System.Drawing.Size(550, 423);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Employee List";
@@ -70,9 +70,9 @@
             this.dgvEmployeeList.AllowUserToDeleteRows = false;
             this.dgvEmployeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployeeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EId,
-            this.EName,
-            this.EPosition});
+            this.EmployeeId,
+            this.EmployeeName,
+            this.EmployeePosition});
             this.dgvEmployeeList.Location = new System.Drawing.Point(8, 18);
             this.dgvEmployeeList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvEmployeeList.MultiSelect = false;
@@ -80,32 +80,9 @@
             this.dgvEmployeeList.ReadOnly = true;
             this.dgvEmployeeList.RowTemplate.Height = 23;
             this.dgvEmployeeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmployeeList.Size = new System.Drawing.Size(543, 397);
+            this.dgvEmployeeList.Size = new System.Drawing.Size(531, 397);
             this.dgvEmployeeList.TabIndex = 0;
             this.dgvEmployeeList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployeeList_CellDoubleClick);
-            // 
-            // EId
-            // 
-            this.EId.DataPropertyName = "EId";
-            this.EId.HeaderText = "Employee ID";
-            this.EId.Name = "EId";
-            this.EId.ReadOnly = true;
-            this.EId.Width = 75;
-            // 
-            // EName
-            // 
-            this.EName.DataPropertyName = "EName";
-            this.EName.HeaderText = "Name";
-            this.EName.Name = "EName";
-            this.EName.ReadOnly = true;
-            // 
-            // EPosition
-            // 
-            this.EPosition.DataPropertyName = "EPosition";
-            this.EPosition.HeaderText = "Position";
-            this.EPosition.Name = "EPosition";
-            this.EPosition.ReadOnly = true;
-            this.EPosition.Width = 127;
             // 
             // groupBox1
             // 
@@ -129,7 +106,7 @@
             this.groupBox1.Size = new System.Drawing.Size(401, 423);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add/Change";
+            this.groupBox1.Text = "Add/Update";
             // 
             // txtId
             // 
@@ -270,6 +247,29 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name:";
             // 
+            // EmployeeId
+            // 
+            this.EmployeeId.DataPropertyName = "EmployeeId";
+            this.EmployeeId.HeaderText = "Employee ID";
+            this.EmployeeId.Name = "EmployeeId";
+            this.EmployeeId.ReadOnly = true;
+            this.EmployeeId.Width = 75;
+            // 
+            // EmployeeName
+            // 
+            this.EmployeeName.DataPropertyName = "EmployeeName";
+            this.EmployeeName.HeaderText = "Name";
+            this.EmployeeName.Name = "EmployeeName";
+            this.EmployeeName.ReadOnly = true;
+            // 
+            // EmployeePosition
+            // 
+            this.EmployeePosition.DataPropertyName = "EmployeePosition";
+            this.EmployeePosition.HeaderText = "Position";
+            this.EmployeePosition.Name = "EmployeePosition";
+            this.EmployeePosition.ReadOnly = true;
+            this.EmployeePosition.Width = 127;
+            // 
             // EmployeeManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -307,8 +307,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EPosition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeePosition;
     }
 }

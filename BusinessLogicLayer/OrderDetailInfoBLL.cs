@@ -12,22 +12,22 @@ namespace BusinessLogicLayer
     {
         private OrderDetailInfoDAL odiDAL = new OrderDetailInfoDAL();
 
-        public List<OrderDetailInfo> GetList()
+        public List<OrderDetail> GetList()
         {
             return odiDAL.GetList();
         }
 
-        public int AddOrderDetailInfo(OrderDetailInfo odi)
+        public int AddOrderDetailInfo(OrderDetail odi)
         {
             return odiDAL.InsertCommand(odi);
         }
 
-        public int UpdateOrderDetailInfo(OrderDetailInfo odi)
+        public int UpdateOrderDetailInfo(OrderDetail odi)
         {
             return Convert.ToInt32(odiDAL.UpdateCommnad(odi));
         }
 
-        public int DeleteOrderDetailInfo(OrderDetailInfo odi)
+        public int DeleteOrderDetailInfo(OrderDetail odi)
         {
             return Convert.ToInt32(odiDAL.DeleteCommand(odi));
         }

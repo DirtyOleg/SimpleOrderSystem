@@ -11,12 +11,12 @@ namespace DataAccessLayer
 {
     public class OrderDetailInfoDAL
     {
-        public List<OrderDetailInfo> GetList()
+        public List<OrderDetail> GetList()
         {
             string sqlCommand = "";
             DataTable dt = SqlHelper.GetFilledTable(sqlCommand);
 
-            List<OrderDetailInfo>  orderDetailInfoList= new List<OrderDetailInfo>();
+            List<OrderDetail>  orderDetailInfoList= new List<OrderDetail>();
             foreach (DataRow row in dt.Rows)
             {
 
@@ -26,7 +26,7 @@ namespace DataAccessLayer
         }
 
 
-        public int SelectCommand(OrderDetailInfo orderDetailInfo)
+        public int SelectCommand(OrderDetail orderDetailInfo)
         {
             string sqlCommand = "";
             SqlParameter[] cmdParams = {
@@ -45,7 +45,7 @@ namespace DataAccessLayer
         }
 
 
-        public int InsertCommand(OrderDetailInfo orderDetailInfo)
+        public int InsertCommand(OrderDetail orderDetailInfo)
         {
             string sqlCommand = "";
             SqlParameter[] cmdParams = {
@@ -63,7 +63,7 @@ namespace DataAccessLayer
         }
 
 
-        public object UpdateCommnad(OrderDetailInfo orderDetailInfo)
+        public object UpdateCommnad(OrderDetail orderDetailInfo)
         {
             string sqlCommand = "";
             SqlParameter[] cmdParams = {
@@ -81,7 +81,7 @@ namespace DataAccessLayer
         }
 
 
-        public object DeleteCommand(OrderDetailInfo orderDetailInfo)
+        public object DeleteCommand(OrderDetail orderDetailInfo)
         {
             string sqlCommand = "[dbo].[SetDelFlagTrue]";
 

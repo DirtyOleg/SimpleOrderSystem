@@ -8,10 +8,10 @@ namespace CommonUtilityLayer.Model
 {
     public class EmployeeInfo
     {
-        public int EId { get; set; }
-        public string EName { get; set; }
-        public string EPwd { get; set; }
-        public string EPosition { get; set; }
+        public int EmployeeId { get; set; }
+        public string EmployeeName { get; set; }
+        public string EmployeePwd { get; set; }
+        public string EmployeePosition { get; set; }
         public bool DelFlag { get; set; }
     }
 }

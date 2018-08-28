@@ -59,44 +59,48 @@ namespace PresentationLayer
         private void btnAddorSave_Click(object sender, EventArgs e)
         {
             bool isSuccess = false;
+
             EmployeeInfo emp = new EmployeeInfo()
             {
-                EName = txtName.Text.Trim(),
-                EPosition = rbManager.Checked ? "Manager" : "Employee",
+                EmployeeName = txtName.Text.Trim(),
+                EmployeePosition = rbManager.Checked ? "Manager" : "Employee",
             };
 
             if (btnAddorSave.Text.Trim().Equals("Add"))
             {
-                //Add new employee
-                emp.EPwd = MD5Helper.EncryptString(txtPwd.Text.Trim());
-
-                if (eiBLL.AddNewEmployeeInfo(emp) != 0)
+                if (!(txtName.Text == string.Empty || txtPwd.Text==string.Empty))
                 {
-                    MessageBox.Show($"Change to EmployeeInfo Table\nAdd Success", "Result");
-                    isSuccess = true;
-                }
+                    //Add new employee
+                    emp.EmployeePwd = MD5Helper.EncryptString(txtPwd.Text.Trim());
+
+                    if (eiBLL.AddNewEmployeeInfo(emp) != 0)
+                    {
+                        MessageBox.Show($"Changes made to EmployeeInfo Table\nOperation: Add New Employee\nSuccess!", "Result");
+                        isSuccess = true;
+                    }
+                }                
             }
             else
             {
                 //Update an existed employee infomation
-                emp.EId = Convert.ToInt32(txtId.Text);
+                emp.EmployeeId = Convert.ToInt32(txtId.Text);
 
                 //Check the comments in dgvEmployeeList_CellDoubleClick() for details
                 if (txtPwd.Text.Equals("!L9%o^3*)G#"))
                 {
                     //user do not change the password
-                    emp.EPwd = string.Empty;
+                    emp.EmployeePwd = string.Empty;
                 }
                 else
                 {
                     //user change the password
-                    emp.EPwd = MD5Helper.EncryptString(txtPwd.Text.Trim());
+                    emp.EmployeePwd = MD5Helper.EncryptString(txtPwd.Text.Trim());
                 }
 
                 int id = eiBLL.UpdateEmployeeInfo(emp);//id for the employee whose infomation has successful update
                 if (id != 0)
                 {
-                    MessageBox.Show($"Change to EmployeeInfo Table\nID:{id} UPDATE Success", "Result");
+                    MessageBox.Show($"Changes made to EmployeeInfo Table\nOperation: Update Employee Info with ID:{id}\nSuccess!", "Result");
                     isSuccess = true;
                 }
             }
@@ -105,6 +109,7 @@ namespace PresentationLayer
             {
                 //if operation success, reset all TextBox and Button
                 ResetTxtBtn();
+                RefreshDataGrindViewData();
             }
             else
             {
@@ -118,15 +123,16 @@ namespace PresentationLayer
             {
                 EmployeeInfo emp = new EmployeeInfo()
                 {
-                    EId = Convert.ToInt32(txtId.Text)
+                    EmployeeId = Convert.ToInt32(txtId.Text)
                 };
 
                 int id = eiBLL.DeleteEmployeeInfo(emp);
-                MessageBox.Show($"Change to EmployeeInfo Table\nID:{id} DELETE Success", "Result");
+                MessageBox.Show($"Changes Made to EmployeeInfo Table\nDelete Employee Info with ID:{id}\nSuccess!", "Result");
+                RefreshDataGrindViewData();
             }
             else
             {
-                MessageBox.Show("Choose one employee to delete", "Error");
+                MessageBox.Show("Double click the Employee needed to delete", "Error");
             }
 
             ResetTxtBtn();
@@ -136,9 +142,9 @@ namespace PresentationLayer
         {
             DataGridViewRow row = dgvEmployeeList.Rows[e.RowIndex];
 
-            txtId.Text = row.Cells["EId"].Value.ToString();
-            txtName.Text = row.Cells["EName"].Value.ToString();
-            if (row.Cells["EPosition"].Value.ToString() == "Employee")
+            txtId.Text = row.Cells["EmployeeId"].Value.ToString();
+            txtName.Text = row.Cells["EmployeeName"].Value.ToString();
+            if (row.Cells["EmployeePosition"].Value.ToString() == "Employee")
             {
                 rbEmployee.Checked = true;
             }
@@ -171,5 +177,12 @@ namespace PresentationLayer
         {
             frm = null;
         }
+
+        private void RefreshDataGrindViewData()
+        {
+            LoadEmployeeList();
+            dgvEmployeeList.DataSource = empList;
+        }
+
     }
 }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CommonUtilityLayer.Model
 {
-    public class TableInfo
+    public class OrderDetail
     {
-        public int TId { get; set; }
-        public bool TIsFree { get; set; }
-        public bool DelFlag { get; set; }
+        public int OrderSummaryId { get; set; }
+        public int DishId { get; set; }
+        public int Count { get; set; }
     }
 }

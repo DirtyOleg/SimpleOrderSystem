@@ -15,7 +15,7 @@ namespace DataAccessLayer
         public List<EmployeeInfo> GetList()
         {
             //Obtain all the Employee infomation from database
-            string sqlCommand = "SELECT EId, EName, EPwd, EPosition FROM [dbo].[EmployeeInfo] WHERE DelFlag <> 'True'";
+            string sqlCommand = "SELECT EmployeeId, EmployeeName, EmployeePwd, EmployeePosition FROM [dbo].[Employee] WHERE DelFlag <> 'True'";
             DataTable empDataTable = SqlHelper.GetFilledTable(sqlCommand);
 
             //Obtain data from the filled datatable, and store them into a EmployeeInfo List
@@ -24,10 +24,10 @@ namespace DataAccessLayer
             {
                 EmpList.Add(new EmployeeInfo()
                 {
-                    EId = Convert.ToInt32(row["EId"]),
-                    EName = row["EName"].ToString(),
-                    EPwd = row["EPwd"].ToString(),
-                    EPosition = row["EPosition"].ToString()
+                    EmployeeId = Convert.ToInt32(row["EmployeeId"]),
+                    EmployeeName = row["EmployeeName"].ToString(),
+                    EmployeePwd = row["EmployeePwd"].ToString(),
+                    EmployeePosition = row["EmployeePosition"].ToString()
                 });
             }
 
@@ -41,18 +41,18 @@ namespace DataAccessLayer
         /// <returns>The EmployeeInfo instance with EId, EPwd and EPosition</returns>
         public EmployeeInfo CommandForLogin(EmployeeInfo emp)
         {
-            string sqlCommand = "SELECT EPosition FROM [dbo].[EmployeeInfo] WHERE EId=@EId AND EPwd=@EPwd AND DelFlag = 'False' "; SqlParameter[] cmdParams = {
-                new SqlParameter("@EId", emp.EId),
-                new SqlParameter("@EPwd", emp.EPwd)
+            string sqlCommand = "SELECT EmployeePosition FROM [dbo].[Employee] WHERE EmployeeId=@EmployeeId AND EmployeePwd=@EmployeePwd AND DelFlag = 'False' "; SqlParameter[] cmdParams = {
+                new SqlParameter("@EmployeeId", emp.EmployeeId),
+                new SqlParameter("@EmployeePwd", emp.EmployeePwd)
             };
 
             try
             {
-                string EPosition = SqlHelper.ExecuteScalar(sqlCommand, cmdParams).ToString();
+                string EmployeePosition = SqlHelper.ExecuteScalar(sqlCommand, cmdParams).ToString();
 
-                if (!string.IsNullOrEmpty(EPosition))
+                if (!string.IsNullOrEmpty(EmployeePosition))
                 {
-                    emp.EPosition = EPosition;
+                    emp.EmployeePosition = EmployeePosition;
                     return emp; 
                 }
                 else
@@ -74,11 +74,11 @@ namespace DataAccessLayer
         /// <returns>The Number of affected line</returns>
         public int CommandForAddNewEmployee(EmployeeInfo emp)
         {
-            string sqlCommand = "INSERT INTO EmployeeInfo(EName, EPwd, EPosition) VALUES(@name,@pwd,@position)";
+            string sqlCommand = "INSERT INTO Employee(EmployeeName, EmployeePwd, EmployeePosition) VALUES(@name,@pwd,@position)";
             SqlParameter[] cmdParams = {
-                new SqlParameter("@name",emp.EName),
-                new SqlParameter("@pwd",emp.EPwd),
-                new SqlParameter("@position",emp.EPosition)
+                new SqlParameter("@name",emp.EmployeeName),
+                new SqlParameter("@pwd",emp.EmployeePwd),
+                new SqlParameter("@position",emp.EmployeePosition)
             };
 
             try
@@ -102,22 +102,22 @@ namespace DataAccessLayer
             string sqlCommand = string.Empty;
             List<SqlParameter> sqlParams = new List<SqlParameter>();
 
-            if (string.IsNullOrEmpty(emp.EPwd))
+            if (string.IsNullOrEmpty(emp.EmployeePwd))
             {
                 //user do not change the password
-                sqlCommand = "UPDATE [dbo].[EmployeeInfo] SET [EName]=@name,[EPosition]=@position OUTPUT INSERTED.EId WHERE [EId]=@id";
-                sqlParams.Add(new SqlParameter("@id", emp.EId));
-                sqlParams.Add(new SqlParameter("@name", emp.EName));
-                sqlParams.Add(new SqlParameter("@position", emp.EPosition));
+                sqlCommand = "UPDATE [dbo].[Employee] SET [EmployeeName]=@name,[EmployeePosition]=@position OUTPUT INSERTED.EmployeeId WHERE [EmployeeId]=@id";
+                sqlParams.Add(new SqlParameter("@id", emp.EmployeeId));
+                sqlParams.Add(new SqlParameter("@name", emp.EmployeeName));
+                sqlParams.Add(new SqlParameter("@position", emp.EmployeePosition));
             }
             else
             {
                 //user change the password
-                sqlCommand = "UPDATE [dbo].[EmployeeInfo] SET [EName]=@name,[EPwd]=@pwd,[EPosition]=@position OUTPUT INSERTED.EId WHERE [EId]=@id";
-                sqlParams.Add(new SqlParameter("@id", emp.EId));
-                sqlParams.Add(new SqlParameter("@name", emp.EName));
-                sqlParams.Add(new SqlParameter("@pwd", emp.EPwd));
-                sqlParams.Add(new SqlParameter("@position", emp.EPosition));
+                sqlCommand = "UPDATE [dbo].[Employee] SET [EmployeeName]=@name,[EmployeePwd]=@pwd,[EmployeePosition]=@position OUTPUT INSERTED.EmployeeId WHERE [EmployeeId]=@id";
+                sqlParams.Add(new SqlParameter("@id", emp.EmployeeId));
+                sqlParams.Add(new SqlParameter("@name", emp.EmployeeName));
+                sqlParams.Add(new SqlParameter("@pwd", emp.EmployeePwd));
+                sqlParams.Add(new SqlParameter("@position", emp.EmployeePosition));
             };
 
             try
@@ -141,8 +141,8 @@ namespace DataAccessLayer
             string sqlCommand = "[dbo].[SetDelFlagTrue]";
 
             SqlParameter[] cmdParams = {
-                new SqlParameter("@id", emp.EId),
-                new SqlParameter("@tableName","EmployeeInfo")
+                new SqlParameter("@id", emp.EmployeeId),
+                new SqlParameter("@tableName","Employee")
             };
 
             try
