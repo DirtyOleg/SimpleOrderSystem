@@ -18,6 +18,11 @@ namespace BusinessLogicLayer
             return meDAL.GetList();
         }
 
+        public Dictionary<int, string> GetDic()
+        {
+            return meDAL.GetDic();
+        }
+
         public int AddMemberInfo(Member member)
         {
             return meDAL.InsertCommand(member);

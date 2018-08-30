@@ -49,5 +49,11 @@ namespace PresentationLayer
             MembershipManagementForm mmManageFrm = MembershipManagementForm.GetForm();
             mmManageFrm.Show();
         }
+
+        private void menuMember_DoubleClick(object sender, EventArgs e)
+        {
+            MemberManagementForm frm = MemberManagementForm.GetForm();
+            frm.Show();
+        }
     }
 }

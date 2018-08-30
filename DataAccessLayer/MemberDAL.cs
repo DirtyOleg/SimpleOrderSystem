@@ -14,18 +14,42 @@ namespace DataAccessLayer
     {
         public List<Member> GetList()
         {
-            string sqlCommand = "";
+            string sqlCommand = @"SELECT MemberId, MemberName, MemberPhone, MemberBalance, MembershipTitle 
+                                  FROM [dbo].[Member] as m, [dbo].[Membership] as ms 
+                                  WHERE m.DelFlag <> 'true' AND m.MembershipId = ms.MembershipId";
             DataTable dt = SqlHelper.GetFilledTable(sqlCommand);
 
             List<Member> memberList = new List<Member>();
             foreach (DataRow row in dt.Rows)
             {
-
+                memberList.Add(new Member {
+                    MemberId = Convert.ToInt32(row["MemberId"].ToString()),
+                    MemberName = row["MemberName"].ToString(),
+                    MemberBalance = Convert.ToDecimal(row["MemberBalance"].ToString()),
+                    MemberPhone = row["MemberPhone"].ToString(),
+                    MembershipType = row["MembershipTitle"].ToString()
+                });
             }
 
             return memberList;
         }
 
+        public Dictionary<int,string> GetDic()
+        {   
+            string sqlCommand= @"SELECT MembershipId, MembershipTitle
+                                 FROM [dbo].[Membership]
+                                 WHERE DelFlag <> 'true'";
+
+            DataTable dt = SqlHelper.GetFilledTable(sqlCommand);
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                dic.Add(Convert.ToInt32(row["MembershipId"].ToString()), row["MembershipTitle"].ToString());
+            }            
+
+            return dic;
+        }
 
         public int SelectCommand(Member member)
         {

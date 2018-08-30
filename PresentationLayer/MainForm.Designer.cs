@@ -31,6 +31,7 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuManager = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMembership = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMember = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -43,6 +44,7 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuManager,
             this.menuMembership,
+            this.menuMember,
             this.menuExit});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -69,6 +71,16 @@
             this.menuMembership.Name = "menuMembership";
             this.menuMembership.Size = new System.Drawing.Size(140, 132);
             this.menuMembership.DoubleClick += new System.EventHandler(this.menuMembership_DoubleClick);
+            // 
+            // menuMember
+            // 
+            this.menuMember.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menuMember.DoubleClickEnabled = true;
+            this.menuMember.Image = global::PresentationLayer.Properties.Resources.Member;
+            this.menuMember.Name = "menuMember";
+            this.menuMember.Size = new System.Drawing.Size(140, 132);
+            this.menuMember.Text = "toolStripMenuItem1";
+            this.menuMember.DoubleClick += new System.EventHandler(this.menuMember_DoubleClick);
             // 
             // menuExit
             // 
@@ -105,5 +117,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuManager;
         private System.Windows.Forms.ToolStripMenuItem menuExit;
         private System.Windows.Forms.ToolStripMenuItem menuMembership;
+        private System.Windows.Forms.ToolStripMenuItem menuMember;
     }
 }
