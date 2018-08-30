@@ -14,29 +14,30 @@ namespace DataAccessLayer
     {
         public List<Member> GetList()
         {
-            string sqlCommand = @"SELECT MemberId, MemberName, MemberPhone, MemberBalance, MembershipTitle 
-                                  FROM [dbo].[Member] as m, [dbo].[Membership] as ms 
-                                  WHERE m.DelFlag <> 'true' AND m.MembershipId = ms.MembershipId";
+            string sqlCommand = @"SELECT MemberId, MemberName, MemberPhone, MemberBalance, MembershipId 
+                                  FROM [dbo].[Member]
+                                  WHERE m.DelFlag <> 'true'";
             DataTable dt = SqlHelper.GetFilledTable(sqlCommand);
 
             List<Member> memberList = new List<Member>();
             foreach (DataRow row in dt.Rows)
             {
-                memberList.Add(new Member {
+                memberList.Add(new Member
+                {
                     MemberId = Convert.ToInt32(row["MemberId"].ToString()),
                     MemberName = row["MemberName"].ToString(),
                     MemberBalance = Convert.ToDecimal(row["MemberBalance"].ToString()),
                     MemberPhone = row["MemberPhone"].ToString(),
-                    MembershipType = row["MembershipTitle"].ToString()
+                    MembershipType = Convert.ToInt32(row["MembershipId"].ToString())
                 });
             }
 
             return memberList;
         }
 
-        public Dictionary<int,string> GetDic()
-        {   
-            string sqlCommand= @"SELECT MembershipId, MembershipTitle
+        public Dictionary<int, string> GetDic()
+        {
+            string sqlCommand = @"SELECT MembershipId, MembershipTitle
                                  FROM [dbo].[Membership]
                                  WHERE DelFlag <> 'true'";
 
@@ -46,7 +47,7 @@ namespace DataAccessLayer
             foreach (DataRow row in dt.Rows)
             {
                 dic.Add(Convert.ToInt32(row["MembershipId"].ToString()), row["MembershipTitle"].ToString());
-            }            
+            }
 
             return dic;
         }
@@ -72,8 +73,12 @@ namespace DataAccessLayer
 
         public int InsertCommand(Member member)
         {
-            string sqlCommand = "";
+            string sqlCommand = "INSERT INTO [dbo].[Member](MemberName, MemberPhone, MemberBalance, MembershipId) VALUES(@name,@phone,@balance,@membershipType)";
             SqlParameter[] cmdParams = {
+                new SqlParameter("@name",member.MemberName),
+                new SqlParameter("@phone",member.MemberPhone),
+                new SqlParameter("@balance",member.MemberBalance),
+                new SqlParameter("@membershipType",member.MembershipType)
             };
 
             try
@@ -90,8 +95,9 @@ namespace DataAccessLayer
 
         public object UpdateCommnad(Member member)
         {
-            string sqlCommand = "";
+            string sqlCommand = "UPDATE [dbo].[Membership] SET ";
             SqlParameter[] cmdParams = {
+
             };
 
             try

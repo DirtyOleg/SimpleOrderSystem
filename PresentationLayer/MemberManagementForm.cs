@@ -63,12 +63,35 @@ namespace PresentationLayer
             //ddlType.SelectedIndex = membershipDic.
             txtPhone.Text = row.Cells[3].Value.ToString();
             txtBalance.Text = row.Cells[4].Value.ToString();
+            btnAddorSave.Text = "Update";
 
         }
 
         private void btnAddorSave_Click(object sender, EventArgs e)
         {
+            if (txtBalance.Text == string.Empty || txtName.Text == string.Empty)
+            {
+                Console.WriteLine("Name or Balance cannot be empty");
+                return;
+            }
 
+            Member m = new Member()
+            {
+                MemberName = txtName.Text.Trim(),
+                MemberBalance = Convert.ToDecimal(txtBalance.Text.Trim()),
+                MembershipType = membershipDic.Where(pair => pair.Value == ddlType.SelectedText).Select(pair => pair.Key).First()
+            };
+
+
+            if (btnAddorSave.Text.Trim() == "Add")
+            {
+                //Add new member
+
+            }
+            else
+            {
+                //Update existed member's information
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -85,6 +108,7 @@ namespace PresentationLayer
             txtPhone.Text = string.Empty;
             txtPhoneSearch.Text = string.Empty;
             ddlType.SelectedIndex = 0;
+            btnAddorSave.Text = "Add";
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
