@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtPhoneSearch = new System.Windows.Forms.TextBox();
+            this.btnSearchReset = new System.Windows.Forms.Button();
+            this.txtSearchPhone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtNameSearch = new System.Windows.Forms.TextBox();
+            this.txtSearchName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvList = new System.Windows.Forms.DataGridView();
@@ -42,10 +42,11 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.btnAddorSave = new System.Windows.Forms.Button();
-            this.ddlType = new System.Windows.Forms.ComboBox();
+            this.cbbMemberTitle = new System.Windows.Forms.ComboBox();
             this.txtBalance = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -55,7 +56,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
@@ -64,10 +64,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnSearch);
-            this.groupBox2.Controls.Add(this.txtPhoneSearch);
+            this.groupBox2.Controls.Add(this.btnSearchReset);
+            this.groupBox2.Controls.Add(this.txtSearchPhone);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtNameSearch);
+            this.groupBox2.Controls.Add(this.txtSearchName);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(853, 13);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
@@ -78,24 +78,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
             // 
-            // btnSearch
+            // btnSearchReset
             // 
-            this.btnSearch.Location = new System.Drawing.Point(16, 114);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(230, 38);
-            this.btnSearch.TabIndex = 5;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearchReset.Location = new System.Drawing.Point(49, 108);
+            this.btnSearchReset.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearchReset.Name = "btnSearchReset";
+            this.btnSearchReset.Size = new System.Drawing.Size(171, 38);
+            this.btnSearchReset.TabIndex = 5;
+            this.btnSearchReset.Text = "Reset";
+            this.btnSearchReset.UseVisualStyleBackColor = true;
+            this.btnSearchReset.Click += new System.EventHandler(this.btnSearchReset_Click);
             // 
-            // txtPhoneSearch
+            // txtSearchPhone
             // 
-            this.txtPhoneSearch.Location = new System.Drawing.Point(82, 63);
-            this.txtPhoneSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPhoneSearch.Name = "txtPhoneSearch";
-            this.txtPhoneSearch.Size = new System.Drawing.Size(162, 28);
-            this.txtPhoneSearch.TabIndex = 3;
+            this.txtSearchPhone.Location = new System.Drawing.Point(82, 63);
+            this.txtSearchPhone.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchPhone.Name = "txtSearchPhone";
+            this.txtSearchPhone.Size = new System.Drawing.Size(162, 28);
+            this.txtSearchPhone.TabIndex = 3;
+            this.txtSearchPhone.TextChanged += new System.EventHandler(this.txtSearchPhone_TextChanged);
             // 
             // label2
             // 
@@ -107,13 +108,14 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Phone:";
             // 
-            // txtNameSearch
+            // txtSearchName
             // 
-            this.txtNameSearch.Location = new System.Drawing.Point(82, 22);
-            this.txtNameSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNameSearch.Name = "txtNameSearch";
-            this.txtNameSearch.Size = new System.Drawing.Size(163, 28);
-            this.txtNameSearch.TabIndex = 1;
+            this.txtSearchName.Location = new System.Drawing.Point(82, 22);
+            this.txtSearchName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchName.Name = "txtSearchName";
+            this.txtSearchName.Size = new System.Drawing.Size(163, 28);
+            this.txtSearchName.TabIndex = 1;
+            this.txtSearchName.TextChanged += new System.EventHandler(this.txtSearchName_TextChanged);
             // 
             // label1
             // 
@@ -176,8 +178,8 @@
             // 
             // Column3
             // 
-            this.Column3.DataPropertyName = "MembershipType";
-            this.Column3.HeaderText = "Membership Type";
+            this.Column3.DataPropertyName = "MembershipTitle";
+            this.Column3.HeaderText = "Membership Title";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
@@ -197,10 +199,11 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnReset);
             this.groupBox3.Controls.Add(this.btnDelete);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.btnAddorSave);
-            this.groupBox3.Controls.Add(this.ddlType);
+            this.groupBox3.Controls.Add(this.cbbMemberTitle);
             this.groupBox3.Controls.Add(this.txtBalance);
             this.groupBox3.Controls.Add(this.txtPhone);
             this.groupBox3.Controls.Add(this.txtName);
@@ -210,14 +213,24 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(853, 254);
+            this.groupBox3.Location = new System.Drawing.Point(853, 192);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(264, 384);
+            this.groupBox3.Size = new System.Drawing.Size(264, 446);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Add/Update";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(49, 389);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(171, 40);
+            this.btnReset.TabIndex = 10;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnDelete
             // 
@@ -252,15 +265,15 @@
             this.btnAddorSave.UseVisualStyleBackColor = true;
             this.btnAddorSave.Click += new System.EventHandler(this.btnAddorSave_Click);
             // 
-            // ddlType
+            // cbbMemberTitle
             // 
-            this.ddlType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlType.FormattingEnabled = true;
-            this.ddlType.Location = new System.Drawing.Point(84, 145);
-            this.ddlType.Margin = new System.Windows.Forms.Padding(4);
-            this.ddlType.Name = "ddlType";
-            this.ddlType.Size = new System.Drawing.Size(162, 26);
-            this.ddlType.TabIndex = 10;
+            this.cbbMemberTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbMemberTitle.FormattingEnabled = true;
+            this.cbbMemberTitle.Location = new System.Drawing.Point(84, 145);
+            this.cbbMemberTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbMemberTitle.Name = "cbbMemberTitle";
+            this.cbbMemberTitle.Size = new System.Drawing.Size(162, 26);
+            this.cbbMemberTitle.TabIndex = 10;
             // 
             // txtBalance
             // 
@@ -346,22 +359,11 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "ID:";
             // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(901, 196);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(171, 40);
-            this.btnReset.TabIndex = 10;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // MemberManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1134, 650);
-            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
@@ -384,10 +386,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtPhoneSearch;
+        private System.Windows.Forms.Button btnSearchReset;
+        private System.Windows.Forms.TextBox txtSearchPhone;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtNameSearch;
+        private System.Windows.Forms.TextBox txtSearchName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvList;
@@ -395,7 +397,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnAddorSave;
-        private System.Windows.Forms.ComboBox ddlType;
+        private System.Windows.Forms.ComboBox cbbMemberTitle;
         private System.Windows.Forms.TextBox txtBalance;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtName;
@@ -405,11 +407,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Button btnReset;
     }
 }

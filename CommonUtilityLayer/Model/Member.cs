@@ -12,6 +12,7 @@ namespace CommonUtilityLayer.Model
         public string MemberName { get; set; }
         public string MemberPhone { get; set; }
         public decimal MemberBalance { get; set; }
-        public int MembershipType { get; set; }
+        public int MembershipId { get; set; }
+        public string MembershipTitle { get; set; }
     }
 }
