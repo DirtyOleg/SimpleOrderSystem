@@ -56,7 +56,7 @@ namespace PresentationLayer
             }
             else
             {
-                MessageBox.Show("Input Infomation is not valid,\nor Employee do not exist", "Login Fail");
+                MessageBox.Show("Login in failed, check your input", "Login Fail");
             }
         }
     }

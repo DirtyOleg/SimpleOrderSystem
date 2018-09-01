@@ -16,7 +16,8 @@ namespace PresentationLayer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(MemberManagementForm.GetForm());
+            Application.Run(new LoginForm());
+            //Application.Run(MemberManagementForm.GetForm());
         }
     }
 }

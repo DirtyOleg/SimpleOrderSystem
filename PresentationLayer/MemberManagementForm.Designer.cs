@@ -213,6 +213,7 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Enabled = false;
             this.groupBox3.Location = new System.Drawing.Point(853, 192);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";

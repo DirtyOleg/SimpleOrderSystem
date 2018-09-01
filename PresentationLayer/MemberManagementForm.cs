@@ -43,6 +43,7 @@ namespace PresentationLayer
         private void MemberManagementForm_Load(object sender, EventArgs e)
         {
             dgvList.AutoGenerateColumns = false;
+            groupBox3.Enabled = this.Tag.ToString() == "0" ? true : false;
             RefreshData();
         }
 

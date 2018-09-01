@@ -26,10 +26,12 @@ namespace PresentationLayer
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //Employee should not have the ability to modify Employee Info and Dish Info
+            //Employee should not have the ability to modify Infomations
+            //Employee is 1, Manager is 0
             if (this.Tag.ToString() == "1")
             {
                 menuManager.Visible = false;
+                menuMembership.Visible = false;
             }
         }
 
@@ -46,14 +48,15 @@ namespace PresentationLayer
 
         private void menuMembership_DoubleClick(object sender, EventArgs e)
         {
-            MembershipManagementForm mmManageFrm = MembershipManagementForm.GetForm();
-            mmManageFrm.Show();
+            MembershipManagementForm msManageFrm = MembershipManagementForm.GetForm();
+            msManageFrm.Show();
         }
 
         private void menuMember_DoubleClick(object sender, EventArgs e)
         {
-            MemberManagementForm frm = MemberManagementForm.GetForm();
-            frm.Show();
+            MemberManagementForm mManageFrm = MemberManagementForm.GetForm();
+            mManageFrm.Tag = this.Tag;
+            mManageFrm.Show();
         }
     }
 }
